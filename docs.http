@@ -1,0 +1,161 @@
+
+
+GET  http://localhost:3000/
+
+### GET all Tasks
+GET  http://localhost:3000/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNTYxMTk2NCwiZXhwIjoxNjA1NjE1NTY0fQ.C9tjT_E2Yl3fHPSmYCw3nK7d1ahyG5Vw42rWBE48k1I
+content-type: application/json
+
+### FILTER Tasks
+GET  http://localhost:3000/tasks?search=demo&status=PROGRESS
+content-type: application/json
+
+### GET Task by ID
+GET  http://localhost:3000/tasks/10/
+Authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNTUxNjA5NiwiZXhwIjoxNjA1NTE5Njk2fQ.MYqjaYcWngvdTrxHWHUst--aZ6OmkAlxR2Fc3UBdj4c
+content-type: application/json
+
+### Create Task
+POST  http://localhost:3000/tasks
+content-type: application/json
+XSRF-TOKEN: lWy3zXe8-jh1NOZ4m6sonAyI5s97BZ3BorrM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNTYxMTk2NCwiZXhwIjoxNjA1NjE1NTY0fQ.C9tjT_E2Yl3fHPSmYCw3nK7d1ahyG5Vw42rWBE48k1I
+
+{
+    "title":"testing csrf token expirtation",
+    "description":"Task Assign to username1"
+}
+
+
+### Update Task by ID
+PATCH   http://localhost:3000/tasks/1/
+content-type: application/json
+XSRF-TOKEN: FXKF3VXn-zk4pTyYYKYcvPhJeGOg_OVKUmWA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNTUxNjA5NiwiZXhwIjoxNjA1NTE5Njk2fQ.MYqjaYcWngvdTrxHWHUst--aZ6OmkAlxR2Fc3UBdj4c
+
+{
+    "title":"Games of Thrones !",
+    "description":"King of the North"
+}
+
+### Delete Task by ID
+DELETE    http://localhost:3000/tasks/9/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNTUxNjA5NiwiZXhwIjoxNjA1NTE5Njk2fQ.MYqjaYcWngvdTrxHWHUst--aZ6OmkAlxR2Fc3UBdj4c
+XSRF-TOKEN: FXKF3VXn-zk4pTyYYKYcvPhJeGOg_OVKUmWA
+content-type: application/json
+
+### Update Task Status by ID
+POST  http://localhost:3000/tasks/1/status
+content-type: application/json
+XSRF-TOKEN: FXKF3VXn-zk4pTyYYKYcvPhJeGOg_OVKUmWA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMiIsImlhdCI6MTYwNTE4NTU2MSwiZXhwIjoxNjA1MTg5MTYxfQ.7Zrdh8bt7J5EkODOy_zglwViBL-xuc2X3qbCz47iutE
+
+
+### SignIn
+POST  http://localhost:3000/auth/signin
+content-type: application/json
+XSRF-TOKEN: A1xL5Uih--FfqN_-uzEncv4mY5-aj8f9zYdo
+
+{
+    "username":"username1",
+    "password":"Username@1"
+}
+
+# "username":"hello",
+# "password":"Demo1234"
+
+### SignUp
+POST  http://localhost:3000/auth/signup
+content-type: application/json
+XSRF-TOKEN: A1xL5Uih--FfqN_-uzEncv4mY5-aj8f9zYdo
+
+{
+    "username":"username1",
+    "password":"Username@1"
+}
+
+
+###
+GET http://localhost:3000/comments
+content-type: application/json
+
+
+###
+POST http://localhost:3000/comments
+content-type: application/json
+
+
+{
+    "comment":"comment testing 2.0 ..."
+}
+
+
+
+###
+GET http://localhost:3000/comments/1/
+content-type: application/json
+
+
+###
+PATCH  http://localhost:3000/comments/1/
+content-type: application/json
+
+
+{
+    "comment":"comment testing 1.0"
+}
+
+
+###
+DELETE   http://localhost:3000/comments/3/
+content-type: application/json
+
+
+
+###
+GET   http://localhost:3000/tasks/microservices/all-task/
+content-type: application/json
+Authorization: Bearer yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNjI1NTE1NSwiZXhwIjoxNjA2MjU4NzU1fQ.r-kN-n-IGeFqfs1R5-bkWqG48HO2o45M9UFILMVwLGA
+
+
+### Adding Comment to Task of Perticular User
+POST  http://localhost:3000/tasks/2/comment/
+content-type: application/json
+XSRF-TOKEN: A1xL5Uih--FfqN_-uzEncv4mY5-aj8f9zYdo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNTIxMjMxMCwiZXhwIjoxNjA1MjE1OTEwfQ.QglG_Kb6pgNjH_JJhJM3FhAJDxgno4r2qsm4eJrG86E
+
+{
+    "comment":"this is comment 1 of task 1"
+}
+
+###
+GET  http://localhost:3000/tasks/1/comment/
+content-type: application/json
+XSRF-TOKEN: A1xL5Uih--FfqN_-uzEncv4mY5-aj8f9zYdo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNTIxMjMxMCwiZXhwIjoxNjA1MjE1OTEwfQ.QglG_Kb6pgNjH_JJhJM3FhAJDxgno4r2qsm4eJrG86E
+
+
+
+
+
+###
+GET   http://localhost:3000/tasks/file/upload/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNTQ3NjI4MywiZXhwIjoxNjA1NDc5ODgzfQ.IrHvT2eD2RMbZvZZtBjxciIg5wnlERCMcN4tz5W4qtE
+content-type: application/json
+
+
+
+###
+GET  http://localhost:3000/tasks/queue-testing/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSIsImlhdCI6MTYwNTQ3NjI4MywiZXhwIjoxNjA1NDc5ODgzfQ.IrHvT2eD2RMbZvZZtBjxciIg5wnlERCMcN4tz5W4qtE
+content-type: application/json
+
+###
+POST http://localhost:3000/workers/transcode/
+XSRF-TOKEN: A1xL5Uih--FfqN_-uzEncv4mY5-aj8f9zYdo
+content-type: application/json
+
+{
+    "value":"testing value "
+}
